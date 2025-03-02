@@ -38,7 +38,10 @@ const Home = () => {
     prevUser.prompt = input;
     setInput("");
     let result = await generateResponse();
-    setShowresult(result);
+    if (result) {  
+      setShowresult(result); 
+      console.log(result, "result");  
+  }
 
     // setFeature('chat')
     user.data = null;
