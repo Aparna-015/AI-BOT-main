@@ -37,12 +37,11 @@ const Home = () => {
     prevUser.imgUrl = user.imgUrl;
     prevUser.prompt = input;
     setInput("");
-    let result = await generateResponse();
-    if (result) {  
-      setShowresult(result); 
-      console.log(result, "result");  
-  }
 
+    let result = await generateResponse();
+    
+    setShowresult(result);
+    console.log(result);
     // setFeature('chat')
     user.data = null;
     user.mime_type = null;
@@ -61,17 +60,17 @@ const Home = () => {
     };
     reader.readAsDataURL(file);
   }
-
   async function handleGenerateImg() {
     setStart(true);
     Setprevfeature(feature);
     setGenImgUrl("");
     prevUser.prompt = input;
-    let result = await query().then((e) => {
+  
+    await query().then((e) => {
       let url = URL.createObjectURL(e);
       setGenImgUrl(url);
     });
-
+  
     setInput("");
     setFeature("chat");
   }
